@@ -100,6 +100,18 @@
             box-shadow: 0 7px 14px rgba(26, 41, 128, 0.1);
         }
 
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary-color), #00b8d4);
+            color: white;
+            border: 1px solid var(--secondary-color);
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #00b8d4, var(--secondary-color));
+            transform: translateY(-3px);
+            box-shadow: 0 7px 14px rgba(0, 210, 255, 0.3);
+        }
+
         .section-title {
             font-size: 2.5rem;
             font-weight: 700;
@@ -203,6 +215,27 @@
 
         .nav-links a:hover:after {
             width: 100%;
+        }
+
+        /* 体验指南强调样式 */
+        .nav-links a[href="#tutorial"] {
+            color: var(--primary-color);
+            font-weight: 600;
+            background: linear-gradient(135deg, rgba(0, 123, 255, 0.1), rgba(0, 210, 255, 0.1));
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid var(--primary-color);
+        }
+
+        .nav-links a[href="#tutorial"]:hover {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+        }
+
+        .nav-links a[href="#tutorial"]:after {
+            display: none;
         }
 
         .nav-buttons {
@@ -1251,11 +1284,17 @@
             margin-bottom: 25px;
         }
         
-        .video-player video {
+        .video-player video,
+        .video-player iframe {
             width: 100%;
             height: auto;
+            min-height: 400px;
             display: block;
             border-radius: 15px;
+        }
+        
+        .video-player iframe {
+            aspect-ratio: 16/9;
         }
         
         .video-overlay {
@@ -1361,7 +1400,7 @@
             }
         }
 
-        /* 体验说明样式 */
+        /* 体验指南样式 */
         .tutorial-section {
             background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
             position: relative;
@@ -2129,13 +2168,14 @@
                 </a>
                 <ul class="nav-links">
                     <li><a href="#features">核心特性</a></li>
-                    <li><a href="#tutorial">体验说明</a></li>
+                    <li><a href="#tutorial">体验指南</a></li>
                     <li><a href="#functions">系统功能</a></li>
                     <li><a href="#technology">技术优势</a></li>
                     <li><a href="#application">应用场景</a></li>
                     <li><a href="#about">关于我们</a></li>
                 </ul>
                 <div class="nav-buttons">
+                    <a href="#tutorial" class="btn btn-secondary">体验指南</a>
                     <a href="https://leqiyyy.github.io/EtherSentinel_mode" class="btn btn-outline">登录</a>
                     <a href="#contact" class="btn btn-primary">联系我们</a>
                 </div>
@@ -2180,14 +2220,20 @@
                 </div>
                 
                 <div class="hero-buttons">
-                    <a href="#features" class="btn btn-primary">
-                        <span>了解更多</span>
+                    <a href="https://leqiyyy.github.io/EtherSentinel_mode" class="btn btn-primary">
+                        <span>开始使用</span>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"/>
                         </svg>
                     </a>
-                    <a href="https://leqiyyy.github.io/EtherSentinel_mode" class="btn btn-outline">
-                        <span>开始使用</span>
+                    <a href="#tutorial" class="btn btn-outline">
+                        <span>体验指南</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"/>
+                        </svg>
+                    </a>
+                    <a href="#features" class="btn btn-outline">
+                        <span>了解更多</span>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"/>
                         </svg>
@@ -2305,11 +2351,11 @@
         </div>
     </section>
 
-    <!-- 体验说明 -->
+    <!-- 体验指南 -->
     <section class="section tutorial-section" id="tutorial">
         <div class="container">
             <div class="tutorial-header text-center">
-                <h2 class="section-title">体验说明</h2>
+                <h2 class="section-title">体验指南</h2>
                 <p class="section-subtitle">通过以下示例了解以太哨兵的核心功能使用方法</p>
             </div>
             
@@ -2637,17 +2683,8 @@
                     <h3 class="video-title">系统演示视频</h3>
                     <p class="video-description">观看以太哨兵系统的完整功能演示，了解各模块的实际操作流程</p>
                     <div class="video-player">
-                        <video controls poster="frontend/public/zhanshi.jpg">
-                            <source src="https://ethersentinel-1305015956.cos.ap-chongqing.myqcloud.com/EtherSentinel.mp4" type="video/mp4">
-                            您的浏览器不支持视频播放。
-                        </video>
-                        <div class="video-overlay">
-                            <div class="play-button">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M8,5.14V19.14L19,12.14L8,5.14Z"/>
-                                </svg>
-                            </div>
-                        </div>
+                        <!-- <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114781474263145&bvid=BV15i3WzKEeF&cid=30803034149&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe> -->
+                        <iframe src="//player.bilibili.com/player.html?isOutside=true&bvid=BV15i3WzKEeF&page=1&high_quality=1&danmaku=0&autoplay=0" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"></iframe>
                     </div>
                     <div class="video-features">
                         <div class="feature-tag">
